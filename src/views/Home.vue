@@ -32,7 +32,12 @@ import Post from '@/components/Post.vue';
 		};
 	},
   beforeCreate() {
-		Axios.get(`${this.$store.state.apis.posts.base}/posts`).then((res) => {
+		// I use the token to emulate a real request
+		Axios.get(`${this.$store.state.apis.posts.base}/posts`, {
+			params: {
+				token: this.$store.state.token,
+			},
+		}).then((res) => {
 			this.$store.commit('setPosts', res.data);
 		}).catch((error) => {
 			this.$data.error = true;
