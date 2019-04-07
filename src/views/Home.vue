@@ -9,19 +9,9 @@
         </b-col>
       </b-row>
 			<b-row v-if="posts !== null">
-        <b-col md="3" :key="post.id" v-for="post in posts">
+        <b-col md="4" :key="post.id" v-for="post in posts">
 					<br>
-					<b-card
-						:title="post.title"
-						img-src="http://lorempixel.com/400/200/business/"
-						img-alt="Image"
-						img-top
-						tag="article"
-						style="max-width: 20rem;"
-						class="mb-2"
-					>
-						<b-card-text>{{ post.body }}</b-card-text>
-					</b-card>
+					<Post :post="post"></Post>
         </b-col>
       </b-row>
     </b-container>
@@ -32,6 +22,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Axios from 'axios';
 import { mapState } from 'vuex';
+import Post from '@/components/Post.vue';
 
 @Component({
 	computed: mapState(['posts']),
@@ -46,7 +37,10 @@ import { mapState } from 'vuex';
 		}).catch((error) => {
 			this.$data.error = true;
 		});
-  },
+	},
+	components: {
+		Post,
+	},
 })
 export default class Home extends Vue {}
 </script>
