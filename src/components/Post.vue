@@ -9,7 +9,7 @@
       style="max-width: 20rem;"
       class="mb-2">
       <b-card-text>{{ post.body }}</b-card-text>
-	  </b-card>
+    </b-card>
   </div>
 </template>
 
